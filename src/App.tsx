@@ -4,6 +4,7 @@ import { ChatList } from './components/ChatList';
 import { ChatWindow } from './components/ChatWindow';
 import { useAuthStore } from './store/useAuthStore';
 import { useChatStore } from './store/useChatStore';
+import { SocketProvider } from './contexts/SocketContext';
 import { supabase } from './lib/supabase';
 
 function App() {
@@ -37,10 +38,12 @@ function App() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      <ChatList />
-      <ChatWindow />
-    </div>
+    <SocketProvider>
+      <div className="flex h-screen bg-gray-100">
+        <ChatList />
+        <ChatWindow />
+      </div>
+    </SocketProvider>
   );
 }
 
